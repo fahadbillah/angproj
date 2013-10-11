@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title>My Angular</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="css/flat-ui.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    .navbar {
+		border-radius: 0px !important;
+	}
+	.hero-unit{
+		border-radius: 0px !important;
+	}
+	pre{
+		border-radius: 0px !important;
+	}
+  .well,.well-small {
+    border-radius: 0px !important;
+  }
+  select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
+  }
+  .navbar-inner {
+    border-radius: 0px !important;
+  }
+    </style>
+  </head>
+  <body>
+  	<div class="container">  		
+  		<div class="navbar">
+  			<div class="navbar-inner">
+  				<ul class="nav visible-desktop"><li><a class="brand" href="#" style="margin-left:0px">Title</a></li></ul>
+  				<ul class="nav">
+  					<li class="active"><a href="#">Home</a></li>
+  					<li><a href="#">Link</a></li>
+  					<li><a href="#">Link</a></li>
+  				</ul>
+  			</div>
+  		</div>
+  		<div class="hero-unit">
+  			<h1>Google Map</h1>
+  			<p>Tagline</p>
+  			<p>
+  				<a class="btn btn-primary btn-large">
+  					Learn more
+  				</a>
+  			</p>
+  		</div>
+  		<div ng-controller="formCtrl" class="container-fluid">
+  			<div class="form-horizontal">
+			  <div class="control-group">
+			    <label class="control-label" for="status">Write Your Status</label>
+			    <div class="controls">
+	  				<textarea ng-model="new_status"></textarea>
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="controls">
+			      <button class="btn btn-primary" ng-click="addStatus()">Submit</button>
+			    </div>
+			  </div>
+			</div>
+        <hr>
+        <span>No. of statuses: {{statuses.length}} </span>
+        <hr>
+  			<div ng-repeat="list in statuses" class="row-fluid well well-small"><div class="span5">{{list.status}}</div><div class="span1 pull-right"><small>{{list.time | date:'MM/dd/yyyy @ h:mma'}}</small></div><div class="span1 pull-right"><span class="icon-heart icon-large"></span></div><div class="span1 pull-right"><span class="icon-comment icon-large"></span></div></div>
+
+  		<script>
+	    //controllers take $scope as parameter
+	    var formCtrl = function($scope){
+	    	$scope.statuses = [
+		    	{
+		    		status: "Default Status 1",
+		    		time: "12:00"
+		    	},
+		    	{
+		    		status: "Default Status 2",
+		    		time: "1:00"
+		    	},
+		    	{
+		    		status: "Default Status 3",
+		    		time: "2:00"
+		    	}
+	    	];
+	    	$scope.addStatus = function(){
+          currTime = new Date().getTime();
+	    		$scope.statuses.push({
+	    			status: $scope.new_status,
+	    			time: currTime
+	    		})
+          $scope.new_status = ''
+	    	}
+	    }
+	    var displayCtrl = function($scope){
+	    	$scope.name = 'MD. Fahad Billah'
+	    	$scope.contact = '01671026001'
+	    }
+	    </script>
+  	</div>
+    <!-- /.container -->
+
+
+    <!-- Load JS here for greater good =============================-->
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/flatui-checkbox.js"></script>
+    <script src="js/flatui-radio.js"></script>
+    <script src="js/jquery.tagsinput.js"></script>
+    <script src="js/jquery.placeholder.js"></script>
+    <script src="angular/angular.min.js"></script>
+    
+  </body>
+</html>
